@@ -1,11 +1,10 @@
 export interface IproductDetail
 {
     id:number;
-    name:string;
+    title:string;
    price:number;
    stock:number;
-    totalprice:number;
-   //stocksymbol:string;
-    //lastprice:number;
+    totalPrice?:number;
+  
 
 }

@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { IproductDetail } from './IproductDetail';
-import { ProductdetailComponent} from './productdetail/productdetail.component';
-import {cc} from './productdetail/productdetail.component';
+
+ 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,52 +10,98 @@ import {cc} from './productdetail/productdetail.component';
 
 export class AppComponent implements OnInit {
   title = 'stockmarket';
-   abc : ProductdetailComponent;
-  
   products:IproductDetail[]; 
-product:any;
 constructor(){}
 ngOnInit()
-{
-this.products=
-[
   {
-    'id':1,
-    'name':"abc",
-    'price':200,
-    'stock':20,
-    'totalprice':10
+      this.products=
+      [
+       {
+      'id':1,
+      'title':"Sunsilk",
+      'price':100,
+      'stock':20
+      
 
-  },
+    },
+    {
+      'id':2,
+      'title':"ClinicPLus",
+      'price':200,
+      'stock':30
+      
+
+    },
+    {
+      'id':3,
+      'title':"Head&Shoulder",
+      'price':300,
+      'stock':10
+      
+
+    },
+    {
+      'id':4,
+      'title':"Panteene",
+      'price':400,
+      'stock':10
+      
+
+    },
+    {
+      'id':5,
+      'title':"Garnier",
+      'price':500,
+      'stock':30    
+
+    },
+    {
+      'id':6,
+      'title':"Dove",
+      'price':210,
+      'stock':40
+      
+
+    },
+    {
+      'id':7,
+      'title':"Herbal",
+      'price':220,
+      'stock':20
+      
+
+    },
+    {
+      'id':9,
+      'title':"Tresseme",
+      'price':320,
+      'stock':10
+      
+
+    },
+    {
+      'id':10,
+      'title':"Lorial",
+      'price':400,
+      'stock':15
+      
+
+    }
+  ];
+
+}
+  updateProductStock(data)
   {
-    'id':2,
-    'name':"abc",
-    'price':200,
-    'stock':30,
-    'totalprice':10
+    console.log(event);
+    console.log("parent stock");
+    console.log("parent"+data.stock)
 
   }
-];
-console.log(this.receivedTprc+"From child to parent");
-///cc();
-}
-receivedTprc = "";
-receiveChild($event: any){
-  this.receivedTprc = $event;
-  
-}
-updateProductStock(data)
-{
-  this.product = this.products.find(x => x.id ==  data.productDetail.id);
-    this.product.stock = parseInt(data.stock);
-}
 
-updateProductTotalPrice(data)
- {
-  this.product = this.products.find(x => x.id ==  data.productDetail.id);
-    this.product.totalprice = parseInt(data.totalprice);
-
+  updateProductTotalPrice(data)
+  {
+    console.log("parent");
+    console.log(data.totalPrice);
+  }
 }
-}
-
 

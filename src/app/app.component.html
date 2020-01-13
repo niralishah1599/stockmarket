@@ -1,24 +1,24 @@
-APP component
-<table class="table" border="1">
+APP Component
+<table class="table" border="1" style="text-align: center;">
   <thead>
     <th>Id</th>
-    <th>Name</th>
+    <th>Title</th>
     <th>Price</th>
     <th>Stock</th>
-    <th>TotalPrice</th>
     <th>Add Stock</th>
+    <th>TotalPrice</th>
   </thead>
-  {{receivedTprc+"vr"}}
-  <tbody>
+   <tbody>
     <tr *ngFor="let product of products">
       <td>{{product.id}}</td>
       <td>{{product.name}}</td>
       <td>{{product.price}}</td>
-    <td>{{product.stock}}</td>
-  <td><app-productdetail [productDetail]="product" 
-   (childTprc)="receiveChild($event)" ></app-productdetail></td>
-  <td><app-stock [productDetail]="product" 
-    (updateProductStock)="updateProductStock($event);"></app-stock></td>
+      <td>{{product.stock}}</td>
+      <td><app-stock [productDetail]="product" 
+       (updateStock)="updateProductStock(product)"></app-stock></td>
+       <td><app-productdetail [productDetail]="product" (updateTotalPrice)="updateProductTotalPrice(product)"></app-productdetail></td>
     </tr>
   </tbody>
 </table>
+
+

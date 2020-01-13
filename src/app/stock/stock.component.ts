@@ -1,5 +1,5 @@
-import { Component, OnInit,Input } from '@angular/core';
-import { cc} from '../productdetail/productdetail.component';
+import { Component, OnInit,Input, Output,EventEmitter } from '@angular/core';
+
  
 @Component({
   selector: 'app-stock',
@@ -9,15 +9,21 @@ import { cc} from '../productdetail/productdetail.component';
 export class StockComponent implements OnInit {
   
   @Input() productDetail: any;
+  @Output() updateStock = new EventEmitter<string>();
   stock:any;
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit()
+  {
   }
 
   updateProductStock(data)
   {
-    console.log(this.productDetail.stock=this.stock);
-   cc();
+  
+    this.productDetail.stock= this.stock;
+    console.log("child stock");
+    this.productDetail.totalprice=this.productDetail.stock*this.productDetail.price;
+    console.log("child stock total price" +this.productDetail.totalprice);
+    this.updateStock.emit(data.stock);
   }
 }
