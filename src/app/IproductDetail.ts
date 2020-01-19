@@ -4,7 +4,5 @@ export interface IproductDetail
     title:string;
    price:number;
    stock:number;
-    totalPrice?:number;
-  
 
 }

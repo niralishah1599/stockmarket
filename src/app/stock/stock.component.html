@@ -1,8 +1,0 @@
-<input type="number" [(ngModel)]="stock" (input)="updateProductStock(productDetail)"/>       
-<div *ngIf="stock;" style="text-align: center;  width:80px;">
-        <p  *ngIf="stock>=0 && stock<10;" style="color:black;background-color:red">Low</p>
-        <p  *ngIf="stock>=10 && stock<20;" style="color:black;background-color: yellow;">Average </p>
-        <p  *ngIf="stock>=20;" style="color:black;background-color: green;">High</p>
- </div>
-        
-   

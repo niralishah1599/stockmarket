@@ -1,0 +1,25 @@
+<button (click)="addProduct($event);">Add </button>
+<br>
+<div *ngIf="hiddenForm">
+<form [formGroup]="addProductForm" (ngSubmit)="onSubmit()">
+  
+    <label>
+      Title:
+      <input type="text" formControlName="title">
+    </label>
+  
+    <label>
+      Price:
+      <input type="number" formControlName="price">
+    </label>
+
+    <label>
+        Stock:
+        <input type="number" formControlName="stock">
+      </label>
+      <br>
+
+      <button type="submit" [disabled]="!addProductForm.valid">Submit</button>
+      <button type="reset" [disabled]="!addProductForm.valid">Reset </button>
+  </form>
+</div>

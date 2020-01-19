@@ -1,24 +1,2 @@
-APP Component
-<table class="table" border="1" style="text-align: center;">
-  <thead>
-    <th>Id</th>
-    <th>Title</th>
-    <th>Price</th>
-    <th>Stock</th>
-    <th>Add Stock</th>
-    <th>TotalPrice</th>
-  </thead>
-   <tbody>
-    <tr *ngFor="let product of products">
-      <td>{{product.id}}</td>
-      <td>{{product.title}}</td>
-      <td>{{product.price}}</td>
-      <td>{{product.stock}}</td>
-      <td><app-stock [productDetail]="product" 
-       (updateStock)="updateProductStock(product)"></app-stock></td>
-       <td><app-productdetail [productDetail]="product" (updateTotalPrice)="updateProductTotalPrice(product)"></app-productdetail></td>
-    </tr>
-  </tbody>
-</table>
 
-
+<app-product-master></app-product-master>

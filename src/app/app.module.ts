@@ -3,20 +3,33 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductdetailComponent } from './productdetail/productdetail.component';
-import { StockComponent } from './stock/stock.component';
+// import { ProductdetailComponent } from './product-master/productdetail/productdetail.component';
+// import { StockComponent } from './product-master/stock/stock.component';
+
+// import { ProductMasterComponent } from './product-master/product-master.component';
+import { ProductMasterModule } from './product-master/product-master.module';
 import { FormsModule } from '@angular/forms';
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    ProductdetailComponent,
-    StockComponent
+  
+
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+   ProductMasterModule,
+   
+    // ProductMasterComponent,
+  //   ProductdetailComponent,
+  //   StockComponent
   ],
+
+
   providers: [],
   bootstrap: [AppComponent]
 })
