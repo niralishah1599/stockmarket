@@ -1,39 +1,46 @@
+<app-add-product
+  [productDetail]="products"
+  (newAddProduct)="showNewAddProduct($event)"
+></app-add-product>
 
-  <app-add-product [productDetail]="products"  (newAddProduct)="showNewAddProduct($event);"></app-add-product>
-  
-        <table class="table" border="1" style="text-align: center;">
-            <thead>
-              <th>Id</th>
-              <th>Title</th>
-              <th>Price</th>
-              <th>Stock</th>
-              <th>Add Stock</th>
-              <th>TotalPrice</th>
-              <th>Delete Product</th>
-            </thead>
-             <tbody>
-             
-              <tr *ngFor="let product of products">
-                <td>{{product.id}}</td>
-                <td>{{product.title}}</td>
-                <td>{{product.price}}</td>
-                <td>{{product.stock}}</td>
-                
-                <td><app-stock [productDetail]="product" 
-                 (updateStock)="updateProductStock(product)"></app-stock></td>
-                 <td >{{product.price*product.stock}}</td>
-                 <td><app-delete-product [productDetail]="product" (deleteItem)="deleteProduct(product)" ></app-delete-product></td>
-                </tr>
-      <tr>
-          <td></td>
-     <td >Total </td>
-     <td>{{total_price}}</td>
-     <td>{{total_stock}}</td>
-
-     <td>Total is=</td>
-     <td>{{sumOfTotal}}</td>
-     <td ></td>
-     
-     </tr>
+<table class="table" border="1" style="text-align: center;">
+  <thead>
+    <th>Id</th>
+    <th>Title</th>
+    <th>Price</th>
+    <th>Stock</th>
+    <th>Add Stock</th>
+    <th>TotalPrice</th>
+    <th>Delete Product</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{ product.id }}</td>
+      <td>{{ product.title }}</td>
+      <td>{{ product.price }}</td>
+      <td>{{ product.stock }}</td>
+      <td>
+        <app-stock
+          [productDetail]="product"
+          (updateStock)="updateProductStock(product)"
+        ></app-stock>
+      </td>
+      <td>{{ product.price * product.stock }}</td>
+      <td>
+        <app-delete-product
+          [productDetail]="products"
+          [productId]="product.id"
+        ></app-delete-product>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Total</td>
+      <td>{{ totalprice() }}</td>
+      <td>{{ totalStock() }}</td>
+      <td>Total is=</td>
+      <td>{{ sumTotal() }}</td>
+      <td></td>
+    </tr>
   </tbody>
-  </table>
+</table>

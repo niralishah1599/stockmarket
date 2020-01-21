@@ -7,25 +7,26 @@ import {IproductDetail} from 'src/app/IproductDetail';
 })
 export class ProductMasterComponent implements OnInit {
 
-  @Input() productDetail:any;
+@Input() productDetail:any;
 @Output() updateTotalPrice = new EventEmitter<string>(); 
 total_price:number;
 total_stock:number;
-sumOfTotal:number;
+total:number;
 productId:number;
-products:IproductDetail[]=[];
+products:IproductDetail[];
 
   constructor() { }
 
   ngOnInit() {
+    this.total_price = 0;
+    this.total_stock = 0;
+    this.total=0;
     this.products=[
       {
         'id':1,
         'title':"Sunsilk",
         'price':100,
         'stock':20
-        
-  
       },
       {
         'id':2,
@@ -91,61 +92,49 @@ products:IproductDetail[]=[];
   
       }
     ]
-  this.totalprice();
-  this.updateProductStock();
-  this.sumTotal();
+  
+  
   } 
   
-  updateProductStock()
+  totalStock()
   {
-    
-    this.total_stock = this. products.reduce((totalStock, product) => {
-          return totalStock += product.stock
-      }, 0)
-      console.log("total stock is"+this.total_stock);
-      this.sumTotal();
+    this.total_stock=0;
+   
+      this.products.map((item) => 
+      {
+            this.total_stock += item.stock;
+      })
+      return this.total_stock;
+  
 
   }
   totalprice()
   {
-     this.total_price = this. products.reduce((totalPrice, product) => 
-     {
-          return totalPrice += product.price
-      }, 0)
-      console.log(this.total_price);
+    this.total_price = 0;
+    this.products.map((item) => 
+    {
+          this.total_price += item.price;
+    })
+    return this.total_price;
 }
 sumTotal()
 {
-  this.sumOfTotal = this. products.reduce((total, product) => 
-     {
-          return total += (product.price * product.stock);
-      }, 0)
-      console.log("sum is" +this.sumOfTotal);
+ 
+      this.total = 0;
+    this.products.map((item) => 
+    {
+          this.total += (item.price * item.stock);
+    })
+    return this.total;
       
+         
 }
-deleteProduct(product)
-{
-  console.log("delete");
-  
-  
-  let item = this.products.find(item => item.id == product.id)
-    this.products.splice(this.products.indexOf(item), 1)
-    console.log(item);
 
-    this.totalprice();
-  this.updateProductStock();
-  this.sumTotal();
-
-var lastProductId = this.products[this.products.length-1].id;
-console.log(lastProductId);
-}
 showNewAddProduct(event)
 {
 
   console.log("show new product")
-  this.totalprice();
-  this.updateProductStock();
-  this.sumTotal();
+
 
 }
   

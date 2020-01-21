@@ -1,4 +1,5 @@
 import { Component, OnInit ,Output,EventEmitter,Input} from '@angular/core';
+import { IproductDetail } from 'src/app/IproductDetail';
 
 @Component({
   selector: 'app-delete-product',
@@ -7,18 +8,24 @@ import { Component, OnInit ,Output,EventEmitter,Input} from '@angular/core';
 })
 export class DeleteProductComponent implements OnInit {
 
-  @Input() productDetail:any;
-  @Output() deleteItem= new EventEmitter<number>();
+  @Input() productDetail:IproductDetail[];
+  @Input() productId:number;
+ 
 
-  constructor() { }
+constructor() { }
 
-  ngOnInit()
-   {
-  }
+ngOnInit(){}
 delete_Item()
 {
-  console.log("delete");
-  console.log("delete id"+this.productDetail.id)
-this.deleteItem.emit(this.productDetail.id);
+console.log("delete");
+console.log("delete "+ JSON.stringify(this.productDetail));
+console.log("delete id" + this.productId);
+let item = this.productDetail.find(item => item.id == this.productId)
+this.productDetail.splice(this.productDetail.indexOf(item),1);
+
+this.productDetail.map((item, index) => {
+  return item.id = index+1;
+})
+
 }
 }
